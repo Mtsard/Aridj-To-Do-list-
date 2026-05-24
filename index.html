@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aridj To-Do List ✨</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <div id="toastMessage" class="toast">✨ SUPERB WORK ARIDJ! 👑🎀</div>
+
+    <div class="container">
+        <!-- الساعة الديجيتال -->
+        <div class="digital-clock" id="clock">00:00:00 PM</div>
+
+        <h1><i class="fa-solid fa-heart"></i> Aridj Tasks <i class="fa-solid fa-heart"></i></h1>
+        
+        <div class="input-container">
+            <input type="text" id="taskInput" placeholder="Enter your next mission, Aridj... 🚀">
+            
+            <div class="row-fields">
+                <div class="field-box">
+                    <label for="taskDeadline"><i class="fa-regular fa-clock"></i> Target Deadline:</label>
+                    <input type="datetime-local" id="taskDeadline">
+                </div>
+                
+                <div class="field-box">
+                    <label for="taskCategory"><i class="fa-solid fa-tags"></i> Category:</label>
+                    <select id="taskCategory">
+                        <option value="study">⚡ CYBER STUDY</option>
+                        <option value="fun">🔮 NEON FUN</option>
+                        <option value="shop">💎 PREMIUM SHOP</option>
+                    </select>
+                </div>
+            </div>
+
+            <button id="addTaskBtn"><i class="fa-solid fa-wand-magic-sparkles"></i> LAUNCH MAGIC TASK</button>
+        </div>
+
+        <!-- قائمة المهام الحالية -->
+        <ul id="taskList"></ul>
+
+        <!-- كادر الـ Historique -->
+        <div class="history-section">
+            <h2><i class="fa-solid fa-clock-rotate-left"></i> Completed History 🌸</h2>
+            <ul id="historyList"></ul>
+            <button id="clearHistoryBtn"><i class="fa-solid fa-trash-can"></i> Clear Archive</button>
+        </div>
+    </div>
+
+    <!-- صوت المنبه -->
+    <audio id="alarmSound" src="https://assets.mixkit.co/active_storage/sfx/2019/2019-500.wav" preload="auto" loop></audio>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
