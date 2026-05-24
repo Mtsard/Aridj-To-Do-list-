@@ -13,24 +13,24 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    padding: 20px 0;
+    padding: 15px; /* يخلي الخلفية تبان في التيلفون */
 }
 
 .container {
-    background: rgba(255, 230, 238, 0.78);
+    background: rgba(255, 230, 238, 0.85); /* زجاج وردي أوضح وباهي */
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 3px solid #ff69b4;
-    padding: 35px 25px;
-    border-radius: 30px;
+    padding: 25px 20px;
+    border-radius: 25px;
     box-shadow: 0 0 35px rgba(255, 20, 147, 0.4);
     width: 100%;
-    max-width: 500px;
+    max-width: 400px; /* يرجع الكادر ملموم وقنين كيما الـ PC */
     transition: all 0.3s ease;
 }
 
 .digital-clock {
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 900;
     color: #fff;
     text-shadow: 0 0 10px #ff1493, 0 0 20px #ff69b4;
@@ -44,20 +44,20 @@ h1 {
     color: #ff1493;
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
     margin-bottom: 25px;
-    font-size: 2.3rem;
+    font-size: 2rem;
     font-weight: 900;
 }
 
 .input-container {
-    background: rgba(255, 255, 255, 0.85);
-    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px;
     border-radius: 20px;
     margin-bottom: 25px;
     border: 1px solid #ffb6c1;
 }
 #taskInput {
     width: 100%;
-    padding: 14px 18px;
+    padding: 12px 15px;
     background: #fff5f7;
     border: 1px solid #ff69b4;
     border-radius: 12px;
@@ -69,9 +69,14 @@ h1 {
 
 .row-fields {
     display: flex;
+    flex-direction: column; /* يرجعهم تحت بعضهم في التيلفون باش ما يتخلطوش */
     gap: 12px;
     margin-bottom: 15px;
 }
+@media (min-width: 400px) {
+    .row-fields { flex-direction: row; } /* في الشاشات الأكبر يرجعوا جنباً إلى جنب */
+}
+
 .field-box {
     display: flex;
     flex-direction: column;
@@ -92,6 +97,7 @@ h1 {
     color: #4a4a4a;
     outline: none;
     font-size: 0.9rem;
+    width: 100%;
 }
 
 #addTaskBtn {
@@ -114,7 +120,7 @@ h1 {
 #taskList, #historyList {
     list-style: none;
     padding: 0;
-    max-height: 250px;
+    max-height: 220px;
     overflow-y: auto;
 }
 #taskList li, #historyList li {
@@ -123,7 +129,7 @@ h1 {
     align-items: center;
     background: white;
     border: 1px solid #ffb6c1;
-    padding: 14px 18px;
+    padding: 12px 15px;
     margin-bottom: 12px;
     border-radius: 16px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.03);
@@ -145,25 +151,30 @@ h1 {
     gap: 4px;
     flex-grow: 1;
     text-align: left;
+    overflow: hidden;
 }
 .task-title {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
     color: #4a4a4a;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .task-countdown {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: #ff1493;
     font-weight: bold;
 }
 
-.actions { display: flex; gap: 8px; }
+.actions { display: flex; gap: 6px; }
 .btn-action {
     border: none;
-    padding: 8px 12px;
+    padding: 8px 10px;
     border-radius: 10px;
     cursor: pointer;
     font-weight: bold;
+    font-size: 0.85rem;
 }
 .stop-btn {
     background: #ffd700;
@@ -175,10 +186,6 @@ h1 {
     background: #ffe5ec;
     color: #ff1493;
 }
-.delete-btn:hover {
-    background: #ff1493;
-    color: white;
-}
 
 .history-section {
     margin-top: 25px;
@@ -186,7 +193,7 @@ h1 {
     border-top: 2px dashed rgba(255, 105, 180, 0.4);
 }
 .history-section h2 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #ff1493;
     margin-bottom: 15px;
     text-align: left;
@@ -197,7 +204,7 @@ h1 {
     opacity: 0.8;
 }
 .history-task-title {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     text-decoration: line-through;
     color: #7f8c8d;
 }
@@ -214,10 +221,6 @@ h1 {
     margin-top: 5px;
     transition: 0.2s;
 }
-#clearHistoryBtn:hover {
-    background: #ff69b4;
-    color: white;
-}
 
 .toast {
     position: fixed;
@@ -226,12 +229,14 @@ h1 {
     transform: translateX(-50%);
     background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
     color: white;
-    padding: 14px 35px;
+    padding: 12px 30px;
     border-radius: 40px;
     font-weight: 900;
     box-shadow: 0 0 25px rgba(255,20,147,0.5);
     transition: top 0.4s ease;
     z-index: 1000;
+    width: max-content;
+    font-size: 0.9rem;
 }
 .toast.show { top: 25px; }
 
